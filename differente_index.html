@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="Découvrez le menu de Differente Snack & Grill. Qualité, saveur et fraîcheur.">
+  <title>Differente Snack & Grill — Menu</title>
+  <style>
+    :root { color-scheme: dark; --yellow:#f5d400; --bg:#090909; --panel:#151515; --muted:#bdbdbd; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--bg); color:#fff; font-family:Arial,Helvetica,sans-serif; }
+    header { text-align:center; padding:34px 18px 22px; background:radial-gradient(ellipse at top, #292300 0%, #090909 66%); }
+    .mark { width:76px; height:76px; margin:0 auto 12px; border:2px solid var(--yellow); border-radius:50%; display:grid; place-items:center; color:var(--yellow); font-size:30px; font-weight:900; }
+    h1 { margin:0; color:var(--yellow); font-size:clamp(29px,7vw,48px); letter-spacing:1px; font-weight:900; }
+    .sub { margin:7px 0 0; letter-spacing:4px; font-size:13px; font-weight:bold; }
+    .slogan { margin:13px 0 0; color:#ddd; font-size:14px; }
+    main { width:min(900px,100%); margin:auto; padding:12px 16px 38px; }
+    .intro { text-align:center; color:var(--muted); line-height:1.5; margin:10px auto 22px; }
+    .pages { display:grid; gap:24px; }
+    .page { background:var(--panel); border:1px solid #3a3300; border-radius:15px; padding:10px; box-shadow:0 8px 28px #0008; }
+    .page h2 { color:var(--yellow); text-align:center; margin:7px 0 12px; font-size:18px; letter-spacing:2px; }
+    .page img { display:block; width:100%; height:auto; border-radius:7px; cursor:zoom-in; }
+    .hint { text-align:center; color:#aaa; font-size:12px; margin:9px 0 2px; }
+    footer { border-top:1px solid #3b3300; text-align:center; padding:22px 12px 30px; color:#aaa; font-size:12px; }
+    footer strong { color:var(--yellow); }
+    .viewer { display:none; position:fixed; inset:0; z-index:10; background:#000f; padding:14px; align-items:center; justify-content:center; }
+    .viewer.open { display:flex; }
+    .viewer img { max-width:100%; max-height:calc(100vh - 28px); object-fit:contain; }
+    .close { position:absolute; top:12px; right:16px; border:1px solid #777; background:#111; color:#fff; border-radius:50%; width:42px; height:42px; font-size:25px; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="mark" aria-hidden="true">D</div>
+    <h1>DIFFERENTE</h1>
+    <div class="sub">SNACK &amp; GRILL</div>
+    <p class="slogan">Qualité • Saveur • Fraîcheur</p>
+  </header>
+  <main>
+    <p class="intro">Bienvenue chez Differente Snack &amp; Grill !<br>Découvrez notre menu et choisissez vos spécialités.</p>
+    <section class="pages" aria-label="Menu">
+      <article class="page">
+        <h2>MENU — PAGE 1</h2>
+        <img src="menu-page-1.jpg" alt="Menu Differente Snack & Grill — page 1" onclick="showImage(this.src)">
+        <p class="hint">Touchez l’image pour l’agrandir</p>
+      </article>
+      <article class="page">
+        <h2>MENU — PAGE 2</h2>
+        <img src="menu-page-2.jpg" alt="Menu Differente Snack & Grill — page 2" onclick="showImage(this.src)">
+        <p class="hint">Touchez l’image pour l’agrandir</p>
+      </article>
+    </section>
+  </main>
+  <footer><strong>DIFFERENTE SNACK &amp; GRILL</strong><br>Bon appétit !</footer>
+  <div class="viewer" id="viewer" onclick="hideImage()" role="dialog" aria-label="Image agrandie">
+    <button class="close" aria-label="Fermer" onclick="hideImage()">×</button>
+    <img id="largeImage" alt="Menu agrandi">
+  </div>
+  <script>
+    function showImage(src) {
+      document.getElementById('largeImage').src = src;
+      document.getElementById('viewer').classList.add('open');
+    }
+    function hideImage() {
+      document.getElementById('viewer').classList.remove('open');
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') hideImage(); });
+  </script>
+</body>
+</html>
